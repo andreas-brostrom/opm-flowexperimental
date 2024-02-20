@@ -15,7 +15,7 @@
 ###########################################################################
 
 # Mandatory call to project
-project(opm-flowexperimental C CXX)
+project(opm-flowexperimental C CXX CUDA)
 
 cmake_minimum_required(VERSION 3.15)
 #option(USE_TRACY "Search for other modules in sibling directories?" OFF)
@@ -108,7 +108,7 @@ macro (config_hook)
 		add_definitions(-DFMT_HEADER_ONLY)
 		list(APPEND EXTRA_INCLUDES SYSTEM ${PROJECT_SOURCE_DIR}/external/fmtlib/include)
 	endif()
-	include_directories(${EXTRA_INCLUDES})
+	include_directories(${EXTRA_INCLUDES} ${CUDA_TOOLKIT_INCLUDE})
 
 	include(UseDamaris)
 endmacro (config_hook)
